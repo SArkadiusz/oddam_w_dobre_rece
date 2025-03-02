@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Przekaż dary{% endblock %}
+{% block content %}
+    <section class="form--steps">
+        <h2>Przekaż swoje dary</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Co chcesz przekazać?</label>
+                <input type="text" name="donation">
+            </div>
+            <button class="btn" type="submit">Wyślij</button>
+        </form>
+    </section>
+{% endblock %}
