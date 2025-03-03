@@ -1,14 +1,25 @@
-{% extends "base.html" %}
-{% block title %}Rejestracja{% endblock %}
-{% block content %}
-    <section class="register-page">
-        <h2>Załóż konto</h2>
-        <form method="post">
-            {% csrf_token %}
-            <input type="text" name="name" placeholder="Imię">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Hasło">
-            <button class="btn" type="submit">Zarejestruj się</button>
-        </form>
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+    {% include 'navigation.html' %}
+    <section class="login-page">
+      <h2>Załóż konto</h2>
+      <form method="POST">
+        {% csrf_token %}
+
+        {% for field in form %}
+          <div class="form-group">
+              {{ field }}
+            {% if field.errors %}
+              <div class="error">{{ field.errors.0 }}</div>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <div class="form-group form-group--buttons">
+          <a href="{% url 'login' %}" class="btn btn--without-border">Zaloguj się</a>
+          <button class="btn" type="submit">Załóż konto</button>
+        </div>
+      </form>
     </section>
 {% endblock %}
