@@ -79,8 +79,8 @@
     <li data-id="3"><a href="#" class="btn btn--without-border">Lokalnym zbiórkom</a></li>
   </ul>
 
-  <!-- SLIDE 1 -->
-  <div class="help--slides active" data-id="1">
+<!-- SLIDE 1: Fundacje -->
+<div class="help--slides active" data-id="1">
     <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy. Możesz sprawdzić czym się zajmują, komu pomagają i czego potrzebują.</p>
 
     <ul class="help--slides-items">
@@ -92,7 +92,7 @@
             </div>
 
             <div class="col"><div class="text">{% for category in institution.categories.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</div></div>
-          </li>
+        </li>
         {% endfor %}
     </ul>
     <ul class="help--slides-pagination">
@@ -112,17 +112,16 @@
             <li><a href="?page_fund={{ institutions_fund.paginator.num_pages }}" class="btn btn--small btn--without-border">»</a></li>
         {% endif %}
     </ul>
-  </div>
+</div>
 
-
-  <!-- SLIDE 2 -->
-  <div class="help--slides" data-id="2">
+<!-- SLIDE 2: Organizacje pozarządowe -->
+<div class="help--slides" data-id="2">
     <p>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic officiis mollitia dolor, neque aspernatur accusamus debitis. Ducimus, officia. Quia, sunt illum! Non iste placeat ab ipsum alias
       quos suscipit corporis!
     </p>
     <ul class="help--slides-items">
-      {% for institution in institutions_org %}
+        {% for institution in institutions_org %}
         <li>
             <div class="col">
               <div class="title">{{ institution.name }}</div>
@@ -130,34 +129,34 @@
             </div>
 
             <div class="col"><div class="text">{% for category in institution.categories.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</div></div>
-          </li>
+        </li>
         {% endfor %}
     </ul>
 
-    <<ul class="help--slides-pagination">
+    <ul class="help--slides-pagination">
         {% if institutions_org.has_previous %}
-            <li><a href="#help?page_org=1" class="btn btn--small btn--without-border">«</a></li>
-            <li><a href="#help?page_org={{ institutions_org.previous_page_number }}" class="btn btn--small btn--without-border">‹</a></li>
+            <li><a href="?page_org=1" class="btn btn--small btn--without-border">«</a></li>
+            <li><a href="?page_org={{ institutions_org.previous_page_number }}" class="btn btn--small btn--without-border">‹</a></li>
         {% endif %}
 
         {% for num in institutions_org.paginator.page_range %}
             <li>
-                <a href="#help?page_org={{ num }}" class="btn btn--small btn--without-border {% if num == institutions_org.number %}active{% endif %}">{{ num }}</a>
+                <a href="?page_org={{ num }}" class="btn btn--small btn--without-border {% if num == institutions_org.number %}active{% endif %}">{{ num }}</a>
             </li>
         {% endfor %}
+
         {% if institutions_org.has_next %}
-            <li><a href="#help?page_org={{ institutions_org.next_page_number }}" class="btn btn--small btn--without-border">›</a></li>
+            <li><a href="?page_org={{ institutions_org.next_page_number }}" class="btn btn--small btn--without-border">›</a></li>
             <li><a href="?page_org={{ institutions_org.paginator.num_pages }}" class="btn btn--small btn--without-border">»</a></li>
         {% endif %}
     </ul>
+</div>
 
-  </div>
-
-  <!-- SLIDE 3 -->
-  <div class="help--slides" data-id="3">
+<!-- SLIDE 3: Lokalne zbiórki -->
+<div class="help--slides" data-id="3">
     <p>Lorem ipsum dolor sit amet, his ocurreret persequeris ea, ad utinam laudem duo. Verterem adipisci partiendo eos ne, ea his reque quaeque recteque, ne quo lobortis intellegam.</p>
     <ul class="help--slides-items">
-      {% for institution in institutions_local %}
+        {% for institution in institutions_local %}
         <li>
             <div class="col">
               <div class="title">{{ institution.name }}</div>
@@ -165,7 +164,7 @@
             </div>
 
             <div class="col"><div class="text">{% for category in institution.categories.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</div></div>
-          </li>
+        </li>
         {% endfor %}
     </ul>
 
@@ -186,6 +185,6 @@
             <li><a href="?page_local={{ institutions_local.paginator.num_pages }}" class="btn btn--small btn--without-border">»</a></li>
         {% endif %}
     </ul>
-  </div>
+</div>
 </section>
 {% endblock %}

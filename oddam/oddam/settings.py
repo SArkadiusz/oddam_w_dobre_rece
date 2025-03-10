@@ -132,4 +132,4 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "donation.CustomUser"
+AUTH_USER_MODEL = "donation.User"
